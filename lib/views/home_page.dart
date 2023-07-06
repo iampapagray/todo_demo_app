@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:todo_app/widgets/add_button.dart';
 
 import '../widgets/task_summary.dart';
 
@@ -12,16 +13,7 @@ class HomePage extends StatelessWidget {
       backgroundColor: const Color.fromARGB(255, 230, 237, 240),
       appBar: const _CustomAppBar(),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
-      floatingActionButton: FloatingActionButton(
-        onPressed: () {},
-        backgroundColor: Colors.black,
-        tooltip: 'Add',
-        shape: const CircleBorder(),
-        child: const Icon(
-          Icons.add,
-          color: Colors.white,
-        ),
-      ),
+      floatingActionButton: const AddButton(),
       bottomNavigationBar: BottomAppBar(
         color: Colors.white,
         shape: const CircularNotchedRectangle(),
@@ -50,35 +42,37 @@ class HomePage extends StatelessWidget {
         ),
       ),
       body: SafeArea(
-        child: Column(
-          children: [
-            Padding(
-              padding: const EdgeInsets.all(20.0),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    'Welcome!',
-                    style: Theme.of(context)
-                        .textTheme
-                        .headlineSmall!
-                        .copyWith(fontWeight: FontWeight.bold),
-                  ),
-                  Text(
-                    'Ready to take on a new task?',
-                    style: Theme.of(context)
-                        .textTheme
-                        .headlineMedium!
-                        .copyWith(fontWeight: FontWeight.bold),
-                  ),
-                ],
+        child: SingleChildScrollView(
+          child: Column(
+            children: [
+              Padding(
+                padding: const EdgeInsets.all(20.0),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      'Welcome!',
+                      style: Theme.of(context)
+                          .textTheme
+                          .headlineSmall!
+                          .copyWith(fontWeight: FontWeight.bold),
+                    ),
+                    Text(
+                      'Ready to take on a new task?',
+                      style: Theme.of(context)
+                          .textTheme
+                          .headlineMedium!
+                          .copyWith(fontWeight: FontWeight.bold),
+                    ),
+                  ],
+                ),
               ),
-            ),
-            const TaskSummary(),
-            const SizedBox(height: 25),
+              const TaskSummary(),
+              const SizedBox(height: 25),
 
-            //latest tasks
-          ],
+              //latest tasks
+            ],
+          ),
         ),
       ),
     );
